@@ -1,0 +1,23 @@
+.gold
+     {
+         color: gold;
+         padding:5px;
+     }
+
+     .a>hover
+     {
+         text-decoration: none;
+     }
+
+     .imgchk
+     {
+         margin-top: 20px;
+         margin-left: 20px;
+         margin-right:10px;
+        
+     }
+     .body
+     {
+       margin:0;
+       padding:0;
+     }
