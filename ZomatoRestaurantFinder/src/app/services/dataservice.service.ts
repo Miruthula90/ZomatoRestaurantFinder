@@ -12,6 +12,7 @@ export class DataserviceService {
 
   private apiURL="https://developers.zomato.com/api/v2.1/search?entity_id=7&entity_type=city&q=test&start=1&count=100";
 
+  //api call
 getData(paramVal):Observable<any>
 {
   let url=this.apiURL+paramVal;

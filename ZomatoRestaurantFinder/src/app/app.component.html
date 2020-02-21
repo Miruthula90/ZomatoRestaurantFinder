@@ -73,16 +73,16 @@
 
             <div class="form-group">
               <div class="d-flex">
-                <input type="text" class="form-control" #data id="searchForRestaurants"
+                <input type="text" class="form-control mt-4" #data id="searchForRestaurants"
                   placeholder="Search for Restaurants and cuisines">
-                <button (click)="chkSearchBox(data.value)" class="btn btn-secondary ml-2" type="submit">Submit</button>
+                <button (click)="chkSearchBox(data.value)" class="btn btn-secondary align-middle mt-3 ml-2" type="submit">Submit</button>
               </div>
 
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-xl-6 col-md-6 col-lg-6" *ngFor="let restaurant of restaurantList">
+          <div class="col-xl-6 col-md-12 col-lg-6" *ngFor="let restaurant of restaurantList">
             <div class="card mt-5" style="width: 27em;">
 
               <div class="">
@@ -90,13 +90,13 @@
                   alt="https://via.placeholder.com/100">
                 <h6 class="card-text imgchk ml-3 mb-0"><small>SPONSORED</small></h6>
                 <h6 class="card-text ml-3 mb-0"><small>casual dining</small></h6>
-                <div class="float-right  mr-3 rounded align-center"
+                <div class="float-right  mr-3 rounded align-center align-middle"
                   [ngStyle]="{'background-color':'#'+restaurant['restaurant']['user_rating']['rating_color']}"
                   style="height:20px;width:40px;">{{restaurant['restaurant']['user_rating']['aggregate_rating']}}</div>
 
                 <h5 class="text-danger mb-0 text-truncate">{{restaurant['restaurant']['name']}}</h5>
                 <div class="float-right mr-3 text-muted">
-                  <small>{{restaurant['restaurant']['user_rating']['votes']}}votes</small></div>
+                  <small>{{restaurant['restaurant']['user_rating']['votes']}} votes</small></div>
 
                 <h6 class="card-text ml-3 mb-0  text-truncate"><small
                     class="font-weight-bold">{{restaurant['restaurant']['location']['locality']}}</small></h6>
@@ -106,14 +106,29 @@
               <hr class="mb-0">
               <div class="card-body">
                 <div class="container">
-
-                  <div class="row">
-                    <div class="col-sm-4">
+<table>
+  <tr  class="align-items-baseline">
+    <td style="width:30%" class="align-top"><small>Cusinies:</small></td>
+    <td><small>{{restaurant['restaurant']['cuisines']}}</small></td>
+  </tr>
+  <tr  class="align-items-baseline">
+    <td style="width:30%" class="align-top"><small>Cost for two:</small></td>
+    <td><small>{{restaurant['restaurant']['currency']}}{{restaurant['restaurant']['average_cost_for_two']}}</small></td>
+  </tr>
+  <tr  class="align-items-baseline">
+    <td style="width:30%" class="align-top"><small>Hours:</small></td>
+    <td><small>{{restaurant['restaurant']['timings']}}</small></td>
+  </tr>
+  
+</table>
+                  <!-- <div class="row">
+                    
+                    <div class="col-md-4 col-lg-4 col-xl-4">
                       <div class="text-muted mb-0"><small>cusinies:</small></div>
                       <div class="text-muted mb-0"><small>cost for two:</small></div>
                       <div class="text-muted mb-0"><small>hours:</small></div>
                     </div>
-                    <div class="col-sm-8">
+                    <div class="col-md-8 col-lg-8 col-xl-8">
                       <div class="text-muted mb-0 ml-3 text-truncate">
                         <small>{{restaurant['restaurant']['cuisines']}}</small></div>
                       <div class="text-muted mb-0 ml-3">
@@ -121,7 +136,7 @@
                       </div>
                       <div class="text-muted mb-0 ml-3"><small>{{restaurant['restaurant']['timings']}}</small></div>
                     </div>
-                  </div>
+                  </div> -->
 
                 </div>
               </div>
@@ -140,7 +155,7 @@
 
         </div>
 
-        <div class="row mt-3 align-center">
+        <div class="row mt-3 ml-3">
           <nav aria-label="Page navigation example">
             <ul class="pagination">
              

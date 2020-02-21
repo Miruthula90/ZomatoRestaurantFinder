@@ -14,35 +14,37 @@ export class AppComponent {
 
   constructor(private ser: DataserviceService) {}
 
+  //checks for keywords in searchbox
   chkSearchBox(event) {
     this.queryParams = this.queryParams + "&q=" + event;
     this.getListOfRestaurants(this.queryParams);
   }
 
+  //pagination data display logic
   setPage(index: number) {
     this.queryParams = this.queryParams + "&start=" + index;
     this.getListOfRestaurants(this.queryParams);
   }
-
+//getting data on page load
   ngOnInit() {
     this.getListOfRestaurants(this.queryParams);
   }
-
+//setting the selected filter color and fetching results from api hit
   setcolor(id: string, value: string) {
     for (let i of this.sortarr) {
       if (i == id) {
-        console.log("hiya");
+        //console.log("hiya");
         document.getElementById(id).style.color = "green";
         this.queryParams = "";
         switch (value) {
           case "Popularity-asc": {
-            console.log(1);
+           // console.log(1);
             this.queryParams = "&sort=real_distance&order=asc";
             this.getListOfRestaurants(this.queryParams);
             break;
           }
           case "Popularity-desc": {
-            console.log(2);
+           // console.log(2);
             this.queryParams = "&sort=real_distance&order=desc";
             this.getListOfRestaurants(this.queryParams);
             break;
@@ -72,18 +74,9 @@ export class AppComponent {
         document.getElementById(i).style.color = "grey";
       }
     }
-    console.log(id, value);
+    
   }
-
-  // getrestaurantlist(qryparam)
-  // {
-  //   let url='https://developers.zomato.com/api/v2.1/search?entity_id=7&entity_type=city&q=test&start=1&count=100'+qryparam;
-  //   console.log(url);
-  //   const headers=new HttpHeaders({'Content-Type':'application/json','user-key':'0c92ea2bca09cf5fd1cef920e0d7651b'});
-  //   return this.http.get(url,{headers:headers})
-
-  // }
-
+//to get list of restaurants from service
   getListOfRestaurants(qryparam) {
     this.ser.getData(qryparam).subscribe(
       data => {
